@@ -48,24 +48,10 @@ export alias gca! = git commit --verbose --all --amend
 export alias gcan! = git commit --verbose --all --no-edit --amend
 export alias gcans! = git commit --verbose --all --signoff --no-edit --amend
 export alias gcam = git commit --all --message
-# export def gcam [msg: string] {
-#     git commit --all --message $msg
-# }
-
-# export alias gcsm = git commit --signoff --message
-export def gcsm [msg: string] {
-    git commit --signoff --message $msg
-}
-
+export alias gcsm = git commit --signoff --message
 export alias gcas = git commit --all --signoff
-# export alias gcasm = git commit --all --signoff --message
-export def gcasm [msg: string] {
-    git commit --all --signoff --message $msg
-}
-
-export def gcb [branch: string] {
-    git checkout -b $branch
-}
+export alias gcasm = git commit --all --signoff --message
+export alias gcb = git checkout -b
 export alias gcd = git checkout develop
 export alias gcf = git config --list
 
@@ -76,10 +62,7 @@ export def gpristine [] {
     git clean -d --force -x
 }
 export alias gcm = git checkout (git_main_branch)
-# export alias gcmsg = git commit --message
-export def gcmsg [msg: string] {
-    git commit --message $msg
-}
+export alias gcmsg = git commit --message
 export alias gco = git checkout
 export alias gcor = git checkout --recurse-submodules
 
@@ -89,7 +72,7 @@ export alias gcpa = git cherry-pick --abort
 export alias gcpc = git cherry-pick --continue
 export alias gcs = git commit --gpg-sign
 export alias gcss = git commit --gpg-sign --signoff
-# export alias gcssm = git commit --gpg-sign --signoff --message
+export alias gcssm = git commit --gpg-sign --signoff --message
 
 export alias gd = git diff
 export alias gdca = git diff --cached
@@ -106,7 +89,7 @@ export alias gfo = git fetch origin
 export alias gg = git gui citool
 export alias gga = git gui citool --amend
 
-# export alias ghh = git help
+export alias ghh = git help
 
 export alias gignore = git update-index --assume-unchanged
 
@@ -161,10 +144,10 @@ export alias grhh = git reset --hard
 export alias groh = git reset $"origin/$(git_current_branch)" --hard
 export alias grm = git rm
 export alias grmc = git rm --cached
-# export alias grmv = git remote rename
-# export alias grrm = git remote remove
+export alias grmv = git remote rename
+export alias grrm = git remote remove
 export alias grs = git restore
-# export alias grset = git remote set-url
+export alias grset = git remote set-url
 export alias grss = git restore --source
 export alias grst = git restore --staged
 export alias grt = cd (git rev-parse --show-toplevel or echo .)
@@ -183,7 +166,7 @@ export alias gst = git status
 
 export alias gstaa = git stash apply
 export alias gstc = git stash clear
-# export alias gstd = git stash drop
+export alias gstd = git stash drop
 export alias gstl = git stash list
 export alias gstp = git stash pop
 export alias gsts = git stash show --text
@@ -191,7 +174,7 @@ export alias gstu = gsta --include-untracked
 export alias gstall = git stash --all
 export alias gsu = git submodule update
 export alias gsw = git switch
-# export alias gswc = git switch --create
+export alias gswc = git switch --create
 
 export alias gts = git tag --sign
 export def gtv [] {
