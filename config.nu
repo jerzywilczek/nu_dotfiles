@@ -786,7 +786,25 @@ $env.config = {
     ]
 }
 
+def "backup history" [] {
+    let backup_path = $nu.history-path | path split | drop 1 | append "history.bak" | path join
+
+    if ($backup_path | path exists) {
+        let length = open $nu.history-path | lines | length
+        let backup_length = open $backup_path | lines | length
+
+        if $length >= $backup_length {
+            cp $nu.history-path $backup_path
+        } else {
+            print $'(ansi red_bold)Backup history file is longer than current history file. Not backing up.(ansi reset)'
+        }
+    } else {
+        cp $nu.history-path $backup_path
+    }
+}
+
 def up [] {
+    backup history
     sudo nala upgrade
     flatpak update
     flatpak uninstall --unused
