@@ -47,10 +47,10 @@ export alias gca = git commit --verbose --all
 export alias gca! = git commit --verbose --all --amend
 export alias gcan! = git commit --verbose --all --no-edit --amend
 export alias gcans! = git commit --verbose --all --signoff --no-edit --amend
-# export alias gcam = git commit --all --message
-export def gcam [msg: string] {
-    git commit --all --message $msg
-}
+export alias gcam = git commit --all --message
+# export def gcam [msg: string] {
+#     git commit --all --message $msg
+# }
 
 # export alias gcsm = git commit --signoff --message
 export def gcsm [msg: string] {
@@ -81,7 +81,7 @@ export def gcmsg [msg: string] {
     git commit --message $msg
 }
 export alias gco = git checkout
-# export alias gcor = git checkout --recurse-submodules
+export alias gcor = git checkout --recurse-submodules
 
 export alias gcount = git shortlog --summary --numbered
 export alias gcp = git cherry-pick
