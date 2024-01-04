@@ -795,7 +795,7 @@ def up [] {
 
 source ~/.oh-my-posh.nu
     
-use ~/.config/nushell/cargo-completions.nu *
+# use ~/.config/nushell/cargo-completions.nu *
 # use ~/.config/nu_stuff/git-completions.nu *
 # use ~/.config/nu_stuff/man-completions.nu *
     
