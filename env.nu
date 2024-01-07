@@ -78,4 +78,5 @@ $env.NU_PLUGIN_DIRS = [
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
 $env.EDITOR = "nvim"
+$env.BAT_THEME = "Catppuccin-macchiato"
 oh-my-posh init nu --config "~/.config/nushell/posh_theme.json"
