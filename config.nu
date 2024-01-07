@@ -819,5 +819,6 @@ source ~/.oh-my-posh.nu
     
 source ~/.config/nushell/git-aliases.nu
     
-use ~/.config/nushell/monokai-dark.nu
-$env.config = ($env.config | merge {color_config: (monokai-dark)})
+# use ~/.config/nushell/monokai-dark.nu
+use ~/.config/nushell/catpuccin-macchiato.nu
+$env.config = ($env.config | merge {color_config: (catpuccin-macchiato)})
