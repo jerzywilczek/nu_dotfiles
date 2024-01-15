@@ -805,20 +805,24 @@ def "backup history" [] {
 
 def up [] {
     backup history
-    sudo nala upgrade
+    if (sys | get host.name) =~ "Arch" {
+        paru
+    } else {
+        sudo nala upgrade
+    }
     flatpak update
     flatpak uninstall --unused
     cargo install-update -a
 }
 
 source ~/.oh-my-posh.nu
-    
+
 # use ~/.config/nushell/cargo-completions.nu *
 # use ~/.config/nu_stuff/git-completions.nu *
 # use ~/.config/nu_stuff/man-completions.nu *
-    
+
 source ~/.config/nushell/git-aliases.nu
-    
+
 # use ~/.config/nushell/monokai-dark.nu
 use ~/.config/nushell/catpuccin-macchiato.nu
 $env.config = ($env.config | merge {color_config: (catpuccin-macchiato)})
