@@ -815,7 +815,7 @@ def up [] {
     cargo install-update -a
 }
 
-source ~/.oh-my-posh.nu
+use ~/.cache/starship/init.nu
 
 # use ~/.config/nushell/cargo-completions.nu *
 # use ~/.config/nu_stuff/git-completions.nu *
