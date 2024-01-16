@@ -80,3 +80,8 @@ $env.NU_PLUGIN_DIRS = [
 $env.EDITOR = "nvim"
 $env.BAT_THEME = "Catppuccin-macchiato"
 oh-my-posh init nu --config "~/.config/nushell/posh_theme.json"
+
+$env.STARSHIP_CONFIG = $"($env.HOME)/.config/nushell/starship_theme.toml"
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+
