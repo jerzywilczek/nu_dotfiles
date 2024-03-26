@@ -157,8 +157,6 @@ let external_completer = {|spans|
         $spans
     }
 
-    $spans | save -f "~/nu.debug"
-
     match $spans.0 {
         _ => $carapace_completer
     } | do $in $spans
@@ -826,3 +824,5 @@ source ~/.config/nushell/git-aliases.nu
 # use ~/.config/nushell/monokai-dark.nu
 use ~/.config/nushell/catpuccin-macchiato.nu
 $env.config = ($env.config | merge {color_config: (catpuccin-macchiato)})
+source ~/.zoxide.nu
+
