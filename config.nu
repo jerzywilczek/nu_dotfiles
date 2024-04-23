@@ -134,11 +134,11 @@ let light_theme = {
 
 # External completer example
 # let carapace_completer = {|spans|
-#     carapace $spans.0 nushell $spans | from json
+#     carapace $spans.0 nushell ...$spans | from json
 # }
 
 let carapace_completer = {|spans: list<string>|
-    carapace $spans.0 nushell $spans
+    carapace $spans.0 nushell ...$spans
     | from json
     | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
 }
@@ -156,8 +156,6 @@ let external_completer = {|spans|
     } else {
         $spans
     }
-
-    $spans | save -f "~/nu.debug"
 
     match $spans.0 {
         _ => $carapace_completer
@@ -260,7 +258,7 @@ $env.config = {
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
     edit_mode: emacs # emacs, vi
-    shell_integration: false # enables terminal shell integration. Off by default, as some terminals have issues with this.
+    shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
     hooks: {
@@ -805,19 +803,26 @@ def "backup history" [] {
 
 def up [] {
     backup history
-    sudo nala upgrade
+    if (sys | get host.name) =~ "Arch" {
+        paru
+    } else {
+        sudo nala upgrade
+    }
     flatpak update
     flatpak uninstall --unused
     cargo install-update -a
 }
 
-source ~/.oh-my-posh.nu
-    
+use ~/.cache/starship/init.nu
+
 # use ~/.config/nushell/cargo-completions.nu *
 # use ~/.config/nu_stuff/git-completions.nu *
 # use ~/.config/nu_stuff/man-completions.nu *
-    
+
 source ~/.config/nushell/git-aliases.nu
-    
-use ~/.config/nushell/monokai-dark.nu
-$env.config = ($env.config | merge {color_config: (monokai-dark)})
+
+# use ~/.config/nushell/monokai-dark.nu
+use ~/.config/nushell/catpuccin-macchiato.nu
+$env.config = ($env.config | merge {color_config: (catpuccin-macchiato)})
+source ~/.zoxide.nu
+

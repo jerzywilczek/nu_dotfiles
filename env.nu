@@ -77,5 +77,14 @@ $env.NU_PLUGIN_DIRS = [
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.cargo/bin")
+
 $env.EDITOR = "nvim"
-oh-my-posh init nu --config "~/.config/nushell/posh_theme.json"
+$env.BAT_THEME = "Catppuccin Macchiato"
+# oh-my-posh init nu --config "~/.config/nushell/posh_theme.json"
+
+$env.STARSHIP_CONFIG = $"($env.HOME)/.config/nushell/starship_theme.toml"
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+zoxide init nushell | save -f ~/.zoxide.nu
+
